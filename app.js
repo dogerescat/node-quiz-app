@@ -1,23 +1,14 @@
 const express = require('express');
 const app = express();
-const request = require('request');
 const path = require('path');
-const Quiz = require('./quiz.js');
+const router = require('./router');
+
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended: false}));
 
-app.get('/api/quiz', (req, res) => {
-  const options = {
-    url: 'https://opentdb.com/api.php?amount=10',
-    methods: 'GET',
-    json: true,
-  };
-  request(options, (error, response) => {
-    const data = response;
-    const quiz = new Quiz(data);
-    quiz.arrangeData();
-    res.json(quiz.returnData());
-  });
-});
+app.use('/', router);
 
 app.listen(3000);

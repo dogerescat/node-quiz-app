@@ -1,0 +1,11 @@
+.question {
+    border-top: solid 2px gray;
+    border-bottom: solid 2px gray;
+  }
+  ul {
+    list-style: none;
+  }
+.choices {
+    display: block;
+    margin: 5px;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>あなたの正答数は<%= results %>です </h1>
+    <p class="question">再チャレンジしたい場合は、以下のボタンをクリック!!</p>
+    <button>ホームに戻る</button>
+    <script>
+        const homeButton = document.querySelector('button');
+        homeButton.addEventListener('click', () => {
+            location.href = '/';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% const jsonData = JSON.parse(data) %>
+    <h1>問題<span><%= questionNumber + 1 %></span></h1>
+    <p>[ジャンル]　<%= jsonData.category %></p>
+    <p>[難易度]　<%= jsonData.difficulty %></p>
+    <p class="question"><%= jsonData.question %></p>
+    <% const answers = jsonData.incorrect_answers.concat(jsonData.correct_answer) %> 
+    <% for (let i = answers.length - 1; i > 0; i--) {%> 
+      <% const j = Math.floor(Math.random() * (i + 1))%>
+      <% const tmp = answers[i] %> 
+      <% answers[i] = answers[j] %> 
+      <%answers[j] = tmp %> 
+    <% } %>
+    <div id="answers">
+      <form action="/api/quiz/results" method="POST">
+        <% answers.forEach((answer) => { %>
+        <button class="choices" name="answer" type="submit" value="<%= answer %>"><%= answer %></button>
+        <% }) %>
+      </form>
+    </div>
+  </body>
+</html>

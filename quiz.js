@@ -1,13 +1,23 @@
 class Quiz {
-  constructor(data) {
-    this.data = data;
+  constructor() {
+    this.succesNumber = 0;
+    this.body;
     this.arrangedData;
   }
-  arrangeData() {
-    this.arrangedData = this.data.body.results;
+  initSuccesNumber() {
+    this.succesNumber = 0;
+  }
+  arrangeData(body) {
+    return this.arrangedData = body.results;
   }
   returnData() {
     return this.arrangedData;
+  }
+  increaseSuccesNumber() {
+    this.succesNumber++
+  }
+  returnSuccesNumber() {
+    return this.succesNumber;
   }
 }
 
